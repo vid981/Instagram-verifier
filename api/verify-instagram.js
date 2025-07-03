@@ -1,10 +1,10 @@
 export default async function handler(req, res) {
-  // ✅ Allow CORS
-  res.setHeader("Access-Control-Allow-Origin", "*"); // Replace * with your frontend domain for more security
-  res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
+  // ✅ Full CORS support
+  res.setHeader("Access-Control-Allow-Origin", "*"); // or use your frontend domain
+  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // ✅ Handle preflight OPTIONS request
+  // ✅ Handle OPTIONS preflight request
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
@@ -35,4 +35,4 @@ export default async function handler(req, res) {
   } catch (error) {
     return res.status(500).json({ valid: false, error: 'Server error' });
   }
-      }
+}
